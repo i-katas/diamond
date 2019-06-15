@@ -17,21 +17,16 @@ public class Diamond {
     public String print() {
         StringBuilder out = new StringBuilder();
         if (letter - 1 >= TOP_LEVEL_CHAR) {
-            out.append(print(letter - 1));
+            out.append(print((char) (letter - 1)));
         }
         out.append(print(letter));
         if (letter - 1 >= TOP_LEVEL_CHAR) {
-            out.append(print(letter - 1));
+            out.append(print((char) (letter - 1)));
         }
         return out.toString();
     }
 
-    private CharSequence print(int current) {
-        StringBuilder out = new StringBuilder();
-        out.append((char) current);
-        if (current != TOP_LEVEL_CHAR) {
-            out.append((char) current);
-        }
-        return out;
+    private CharSequence print(char current) {
+        return current == TOP_LEVEL_CHAR ? String.valueOf(current) : new String(new char[]{current, current});
     }
 }

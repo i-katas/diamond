@@ -40,7 +40,7 @@ public class Diamond {
 
     private CharSequence print(char current, char middle) {
         if (current == TOP_LEVEL_CHAR) {
-            return repeat(SPACE, middle - current) + String.valueOf(current);
+            return repeat(SPACE, middle - current) + current;
         }
         return String.valueOf(current) + spaces(current) + current;
     }
@@ -53,7 +53,7 @@ public class Diamond {
         return 2 * (current - TOP_LEVEL_CHAR) + 1;
     }
 
-    private CharSequence repeat(char c, int n) {
+    private String repeat(char c, int n) {
         char[] chars = new char[n];
         Arrays.fill(chars, c);
         return String.valueOf(chars);

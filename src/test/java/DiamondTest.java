@@ -29,15 +29,19 @@ public class DiamondTest {
 
     @Test
     public void repeatInnerLayerCharacter() {
-        assertThat(stripAll(Diamond.of('A').print(), "\\s+"), equalTo("A"));
-        assertThat(stripAll(Diamond.of('B').print(), "\\s+"), containsString("BB"));
-        assertThat(stripAll(Diamond.of('C').print(), "\\s+"), containsString("CC"));
+        assertThat(stripAll(Diamond.of('A')), equalTo("A"));
+        assertThat(stripAll(Diamond.of('B')), containsString("BB"));
+        assertThat(stripAll(Diamond.of('C')), containsString("CC"));
     }
 
     @Test
     public void repeatCurrentLevelLineExceptMiddleLevel() {
-        assertThat(stripAll(Diamond.of('B').print(), "\\s+"), equalTo("ABBA"));
-        assertThat(stripAll(Diamond.of('C').print(), "\\s+"), equalTo("ABBCCBBA"));
+        assertThat(stripAll(Diamond.of('B')), equalTo("ABBA"));
+        assertThat(stripAll(Diamond.of('C')), equalTo("ABBCCBBA"));
+    }
+
+    private String stripAll(Diamond diamond) {
+        return stripAll(diamond.print(), "\\s+");
     }
 
     private String stripAll(String s, String regex) {

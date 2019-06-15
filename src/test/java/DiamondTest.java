@@ -50,6 +50,8 @@ public class DiamondTest {
     @Test
     public void printsInnerLayerSpaces() {
         assertThat(Diamond.of('B').print(), containsString("B B"));
+        assertThat(Diamond.of('C').print(), containsString("B B"));
+        assertThat(Diamond.of('C').print(), containsString("C   C"));
     }
 
     private int lines(Diamond diamond) {

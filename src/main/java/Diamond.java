@@ -43,8 +43,9 @@ public class Diamond {
     }
 
     private CharSequence spaces(char current) {
+        int width = 2 * (current - TOP_LEVEL_CHAR) + 1;
+        int n = width - 2;
         StringBuilder out = new StringBuilder();
-        int n = current - TOP_LEVEL_CHAR;
         for (int i = 0; i < n; i++) {
             out.append(' ');
         }

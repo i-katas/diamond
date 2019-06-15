@@ -25,4 +25,14 @@ public class DiamondTest {
         ));
         //@formatter:on
     }
+
+    @Test
+    public void repeatInnerLayerCharacter() {
+        assertThat(stripAll(Diamond.of('A').print(), "\\s+"), equalTo("A"));
+        assertThat(stripAll(Diamond.of('B').print(), "\\s+"), equalTo("BB"));
+    }
+
+    private String stripAll(String s, String regex) {
+        return s.replaceAll(regex, "");
+    }
 }

@@ -40,6 +40,17 @@ public class DiamondTest {
         assertThat(stripAll(Diamond.of('C')), equalTo("ABBCCBBA"));
     }
 
+    @Test
+    public void diamondLines() {
+        assertThat(lines(Diamond.of('A')), equalTo(1));
+        assertThat(lines(Diamond.of('B')), equalTo(3));
+        assertThat(lines(Diamond.of('C')), equalTo(5));
+    }
+
+    private int lines(Diamond diamond) {
+        return diamond.print().split("\n").length;
+    }
+
     private String stripAll(Diamond diamond) {
         return stripAll(diamond.print(), "\\s+");
     }

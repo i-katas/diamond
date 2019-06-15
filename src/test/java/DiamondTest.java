@@ -30,6 +30,7 @@ public class DiamondTest {
     public void repeatInnerLayerCharacter() {
         assertThat(stripAll(Diamond.of('A').print(), "\\s+"), equalTo("A"));
         assertThat(stripAll(Diamond.of('B').print(), "\\s+"), equalTo("BB"));
+        assertThat(stripAll(Diamond.of('C').print(), "\\s+"), equalTo("CC"));
     }
 
     private String stripAll(String s, String regex) {

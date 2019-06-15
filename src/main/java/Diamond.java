@@ -15,7 +15,11 @@ public class Diamond {
     }
 
     public String print() {
-        return new StringBuilder().append(print(letter - 1)).append(print(letter)).append(print(letter - 1)).toString();
+        StringBuilder out = new StringBuilder();
+        out.append(print(letter - 1));
+        out.append(print(letter));
+        out.append(print(letter - 1));
+        return out.toString();
     }
 
     private CharSequence print(int current) {

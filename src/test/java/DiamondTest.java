@@ -54,8 +54,18 @@ public class DiamondTest {
         assertThat(Diamond.of('C').print(), containsString("C   C"));
     }
 
+    @Test
+    public void printIndentsExceptMiddleLine() {
+        assertThat(stripAllLineFeed(Diamond.of('B')), equalTo(" AB B A"));
+    }
+
+
     private int lines(Diamond diamond) {
         return diamond.print().split("\n").length;
+    }
+
+    private String stripAllLineFeed(Diamond diamond) {
+        return stripAll(diamond.print(), "\\n");
     }
 
     private String stripAll(Diamond diamond) {

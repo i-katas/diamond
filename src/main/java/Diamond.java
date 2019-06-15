@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * @author xiaoliang
  * @since 2019-06-15
@@ -49,10 +51,8 @@ public class Diamond {
     }
 
     private CharSequence repeat(char c, int n) {
-        StringBuilder out = new StringBuilder();
-        for (int i = 0; i < n; i++) {
-            out.append(c);
-        }
-        return out.toString();
+        char[] chars = new char[n];
+        Arrays.fill(chars, c);
+        return String.valueOf(chars);
     }
 }

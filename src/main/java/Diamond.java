@@ -24,16 +24,16 @@ public class Diamond {
 
     private StringBuilder top(final char letter) {
         StringBuilder it = new StringBuilder();
-        for (int start = TOP_LEVEL_CHAR, end = letter - 1; start <= end; start++) {
-            it.append(print((char) (start), letter)).append(LF);
+        for (char start = TOP_LEVEL_CHAR, end = (char) (letter - 1); start <= end; start++) {
+            it.append(print(start, letter)).append(LF);
         }
         return it;
     }
 
     private StringBuilder bottom(final char letter) {
         StringBuilder it = new StringBuilder();
-        for (int start = TOP_LEVEL_CHAR, end = letter - 1; start <= end; end--) {
-            it.append(LF).append(print((char) end, letter));
+        for (char start = TOP_LEVEL_CHAR, end = (char) (letter - 1); start <= end; end--) {
+            it.append(LF).append(print(end, letter));
         }
         return it;
     }

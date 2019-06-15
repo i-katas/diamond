@@ -12,4 +12,15 @@ public class DiamondTest {
     public void singleLayeredDiamond() {
         assertThat(Diamond.of('A').print(), equalTo("A"));
     }
+
+    @Test
+    public void twoLayeredDiamond() {
+        //@formatter:off
+        assertThat(Diamond.of('B').print(), equalTo(
+            " A\n"+
+            "B B\n"+
+            " A"
+        ));
+        //@formatter:on
+    }
 }

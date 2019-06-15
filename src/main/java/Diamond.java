@@ -46,8 +46,11 @@ public class Diamond {
     }
 
     private CharSequence spaces(char current) {
-        int width = 2 * (current - TOP_LEVEL_CHAR) + 1;
-        return repeat(SPACE, width - 2);
+        return repeat(SPACE, width(current) - 2);
+    }
+
+    private int width(char current) {
+        return 2 * (current - TOP_LEVEL_CHAR) + 1;
     }
 
     private CharSequence repeat(char c, int n) {

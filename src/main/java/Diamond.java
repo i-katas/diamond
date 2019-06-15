@@ -19,13 +19,13 @@ public class Diamond {
     }
 
     public String print() {
-        return String.valueOf(top(letter)) + print(letter, letter) + bottom(letter);
+        return String.valueOf(top(letter)) + line(letter, letter) + bottom(letter);
     }
 
     private CharSequence top(final char middle) {
         StringBuilder it = new StringBuilder();
         for (char start = TOP_LEVEL_CHAR, end = (char) (middle - 1); start <= end; start++) {
-            it.append(print(start, middle)).append(LF);
+            it.append(line(start, middle)).append(LF);
         }
         return it;
     }
@@ -33,12 +33,12 @@ public class Diamond {
     private CharSequence bottom(final char middle) {
         StringBuilder it = new StringBuilder();
         for (char start = TOP_LEVEL_CHAR, end = (char) (middle - 1); start <= end; end--) {
-            it.append(LF).append(print(end, middle));
+            it.append(LF).append(line(end, middle));
         }
         return it;
     }
 
-    private CharSequence print(char current, char middle) {
+    private CharSequence line(char current, char middle) {
         return indent(current, middle) + current + (current == TOP_LEVEL_CHAR ? "" : spaces(current) + current);
     }
 

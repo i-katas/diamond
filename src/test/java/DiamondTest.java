@@ -37,6 +37,7 @@ public class DiamondTest {
     @Test
     public void repeatCurrentLevelLineExceptMiddleLevel() {
         assertThat(stripAll(Diamond.of('B').print(), "\\s+"), equalTo("ABBA"));
+        assertThat(stripAll(Diamond.of('C').print(), "\\s+"), equalTo("ABBCCBBA"));
     }
 
     private String stripAll(String s, String regex) {

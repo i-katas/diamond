@@ -4,6 +4,7 @@
  */
 public class Diamond {
     private static final char TOP_LEVEL_CHAR = 'A';
+    private static final char LF = '\n';
     private char letter;
 
     public Diamond(char letter) {
@@ -21,7 +22,7 @@ public class Diamond {
     private StringBuilder top(char letter) {
         StringBuilder it = new StringBuilder();
         for (int start = TOP_LEVEL_CHAR, end = letter - 1; start <= end; start++) {
-            it.append(print((char) (start)));
+            it.append(print((char) (start))).append(LF);
         }
         return it;
     }
@@ -29,7 +30,7 @@ public class Diamond {
     private StringBuilder bottom(char letter) {
         StringBuilder it = new StringBuilder();
         for (int start = TOP_LEVEL_CHAR, end = letter - 1; start <= end; end--) {
-            it.append(print((char) end));
+            it.append(LF).append(print((char) end));
         }
         return it;
     }

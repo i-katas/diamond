@@ -39,17 +39,14 @@ public class Diamond {
     }
 
     private CharSequence print(char current, char middle) {
-        if (current == TOP_LEVEL_CHAR) {
-            return indent(current, middle) + current;
-        }
-        return indent(current, middle) + current + spaces(current) + current;
+        return indent(current, middle) + current + (current == TOP_LEVEL_CHAR ? "" : spaces(current) + current);
     }
 
     private String indent(char current, char middle) {
         return repeat(SPACE, middle - current);
     }
 
-    private CharSequence spaces(char current) {
+    private String spaces(char current) {
         return repeat(SPACE, width(current) - 2);
     }
 

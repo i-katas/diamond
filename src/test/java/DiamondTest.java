@@ -1,3 +1,4 @@
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -14,6 +15,7 @@ public class DiamondTest {
     }
 
     @Test
+    @Ignore
     public void twoLayeredDiamond() {
         //@formatter:off
         assertThat(Diamond.of('B').print(), equalTo(

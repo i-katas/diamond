@@ -16,7 +16,6 @@ public class DiamondTest {
     }
 
     @Test
-    @Ignore
     public void twoLayeredDiamond() {
         //@formatter:off
         assertThat(Diamond.of('B').print(), equalTo(

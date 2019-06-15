@@ -57,7 +57,7 @@ public class DiamondTest {
     @Test
     public void printIndentsExceptMiddleLine() {
         assertThat(stripAllLineFeed(Diamond.of('B')), equalTo(" AB B A"));
-        assertThat(stripAllLineFeed(Diamond.of('C')), equalTo("  A B B C   C B B  A"));
+        assertThat(stripAllLineFeed(Diamond.of('C')), equalTo("  A B BC   C B B  A"));
     }
 
 

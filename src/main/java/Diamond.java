@@ -15,16 +15,23 @@ public class Diamond {
     }
 
     public String print() {
-        StringBuilder out = new StringBuilder();
-        char letter = this.letter;
-        for (int head = TOP_LEVEL_CHAR; head <= letter - 1; head++) {
-            out.append(print((char) (head)));
+        return String.valueOf(top(letter)) + print(letter) + bottom(letter);
+    }
+
+    private StringBuilder top(char letter) {
+        StringBuilder it = new StringBuilder();
+        for (int start = TOP_LEVEL_CHAR, end = letter - 1; start <= end; start++) {
+            it.append(print((char) (start)));
         }
-        out.append(print(letter));
-        for (int tail = letter - 1; TOP_LEVEL_CHAR <= tail; tail--) {
-            out.append(print((char) tail));
+        return it;
+    }
+
+    private StringBuilder bottom(char letter) {
+        StringBuilder it = new StringBuilder();
+        for (int start = TOP_LEVEL_CHAR, end = letter - 1; start <= end; end--) {
+            it.append(print((char) end));
         }
-        return out.toString();
+        return it;
     }
 
     private CharSequence print(char current) {

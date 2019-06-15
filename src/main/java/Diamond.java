@@ -19,28 +19,28 @@ public class Diamond {
     }
 
     public String print() {
-        return String.valueOf(top(letter)) + print(letter) + bottom(letter);
+        return String.valueOf(top(letter)) + print(letter, letter) + bottom(letter);
     }
 
-    private StringBuilder top(char letter) {
+    private StringBuilder top(final char letter) {
         StringBuilder it = new StringBuilder();
         for (int start = TOP_LEVEL_CHAR, end = letter - 1; start <= end; start++) {
-            it.append(print((char) (start))).append(LF);
+            it.append(print((char) (start), letter)).append(LF);
         }
         return it;
     }
 
-    private StringBuilder bottom(char letter) {
+    private StringBuilder bottom(final char letter) {
         StringBuilder it = new StringBuilder();
         for (int start = TOP_LEVEL_CHAR, end = letter - 1; start <= end; end--) {
-            it.append(LF).append(print((char) end));
+            it.append(LF).append(print((char) end, letter));
         }
         return it;
     }
 
-    private CharSequence print(char current) {
+    private CharSequence print(char current, char middle) {
         if (current == TOP_LEVEL_CHAR) {
-            return String.valueOf(current);
+            return repeat(SPACE, middle - current) + String.valueOf(current);
         }
         return String.valueOf(current) + spaces(current) + current;
     }

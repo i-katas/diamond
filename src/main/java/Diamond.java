@@ -5,6 +5,7 @@
 public class Diamond {
     private static final char TOP_LEVEL_CHAR = 'A';
     private static final char LF = '\n';
+    private static final char SPACE = ' ';
     private char letter;
 
     public Diamond(char letter) {
@@ -44,10 +45,13 @@ public class Diamond {
 
     private CharSequence spaces(char current) {
         int width = 2 * (current - TOP_LEVEL_CHAR) + 1;
-        int n = width - 2;
+        return repeat(SPACE, width - 2);
+    }
+
+    private CharSequence repeat(char c, int n) {
         StringBuilder out = new StringBuilder();
         for (int i = 0; i < n; i++) {
-            out.append(' ');
+            out.append(c);
         }
         return out.toString();
     }

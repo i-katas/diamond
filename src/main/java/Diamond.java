@@ -14,6 +14,12 @@ public class Diamond {
     }
 
     public String print() {
-        return String.valueOf(letter);
+        StringBuilder out = new StringBuilder();
+        out.append(letter);
+
+        if (letter == 'B') {
+            out.append(letter);
+        }
+        return out.toString();
     }
 }

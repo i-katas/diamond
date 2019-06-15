@@ -42,7 +42,7 @@ public class Diamond {
         if (current == TOP_LEVEL_CHAR) {
             return indent(current, middle) + current;
         }
-        return String.valueOf(current) + spaces(current) + current;
+        return indent(current, middle) + current + spaces(current) + current;
     }
 
     private String indent(char current, char middle) {

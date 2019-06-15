@@ -1,6 +1,7 @@
 import org.junit.Ignore;
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
@@ -29,8 +30,8 @@ public class DiamondTest {
     @Test
     public void repeatInnerLayerCharacter() {
         assertThat(stripAll(Diamond.of('A').print(), "\\s+"), equalTo("A"));
-        assertThat(stripAll(Diamond.of('B').print(), "\\s+"), equalTo("BB"));
-        assertThat(stripAll(Diamond.of('C').print(), "\\s+"), equalTo("CC"));
+        assertThat(stripAll(Diamond.of('B').print(), "\\s+"), containsString("BB"));
+        assertThat(stripAll(Diamond.of('C').print(), "\\s+"), containsString("CC"));
     }
 
     @Test

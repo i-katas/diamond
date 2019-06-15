@@ -22,18 +22,18 @@ public class Diamond {
         return String.valueOf(top(letter)) + print(letter, letter) + bottom(letter);
     }
 
-    private StringBuilder top(final char letter) {
+    private CharSequence top(final char middle) {
         StringBuilder it = new StringBuilder();
-        for (char start = TOP_LEVEL_CHAR, end = (char) (letter - 1); start <= end; start++) {
-            it.append(print(start, letter)).append(LF);
+        for (char start = TOP_LEVEL_CHAR, end = (char) (middle - 1); start <= end; start++) {
+            it.append(print(start, middle)).append(LF);
         }
         return it;
     }
 
-    private StringBuilder bottom(final char letter) {
+    private CharSequence bottom(final char middle) {
         StringBuilder it = new StringBuilder();
-        for (char start = TOP_LEVEL_CHAR, end = (char) (letter - 1); start <= end; end--) {
-            it.append(LF).append(print(end, letter));
+        for (char start = TOP_LEVEL_CHAR, end = (char) (middle - 1); start <= end; end--) {
+            it.append(LF).append(print(end, middle));
         }
         return it;
     }

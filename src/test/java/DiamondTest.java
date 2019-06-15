@@ -1,4 +1,3 @@
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -16,63 +15,65 @@ public class DiamondTest {
     }
 
     @Test
-    public void twoLayeredDiamond() {
+    public void multipleLayeredDiamond() {
         //@formatter:off
-        assertThat(Diamond.of('B').print(), equalTo(
-            " A\n"+
-            "B B\n"+
-            " A"
+        assertThat(Diamond.of('C').print(), equalTo(
+            "  A\n"+
+            " B B\n"+
+            "C   C\n"+
+            " B B\n"+
+            "  A"
         ));
         //@formatter:on
     }
 
     @Test
-    public void repeatInnerLayerCharacter() {
+    public void repeatsCharacterForAllInnerLines() {
         assertThat(stripAll(Diamond.of('A')), equalTo("A"));
         assertThat(stripAll(Diamond.of('B')), containsString("BB"));
         assertThat(stripAll(Diamond.of('C')), containsString("CC"));
     }
 
     @Test
-    public void repeatCurrentLevelLineExceptMiddleLevel() {
+    public void repeatsLinesExceptTheMiddleLine() {
         assertThat(stripAll(Diamond.of('B')), equalTo("ABBA"));
         assertThat(stripAll(Diamond.of('C')), equalTo("ABBCCBBA"));
     }
 
     @Test
-    public void diamondLines() {
-        assertThat(lines(Diamond.of('A')), equalTo(1));
-        assertThat(lines(Diamond.of('B')), equalTo(3));
-        assertThat(lines(Diamond.of('C')), equalTo(5));
+    public void diamondTotalLines() {
+        assertThat(totalLinesOf(Diamond.of('A')), equalTo(1));
+        assertThat(totalLinesOf(Diamond.of('B')), equalTo(3));
+        assertThat(totalLinesOf(Diamond.of('C')), equalTo(5));
     }
 
     @Test
-    public void printsInnerLayerSpaces() {
+    public void printsSpacesForAllInnerLines() {
         assertThat(Diamond.of('B').print(), containsString("B B"));
         assertThat(Diamond.of('C').print(), containsString("B B"));
         assertThat(Diamond.of('C').print(), containsString("C   C"));
     }
 
     @Test
-    public void printIndentsExceptMiddleLine() {
-        assertThat(stripAllLineFeed(Diamond.of('B')), equalTo(" AB B A"));
-        assertThat(stripAllLineFeed(Diamond.of('C')), equalTo("  A B BC   C B B  A"));
+    public void printIndentsForAllLinesExceptTheMiddleLine() {
+        assertThat(stripAllLF(Diamond.of('B')), equalTo(" AB B A"));
+        assertThat(stripAllLF(Diamond.of('C')), equalTo("  A B BC   C B B  A"));
     }
 
 
-    private int lines(Diamond diamond) {
+    private int totalLinesOf(Diamond diamond) {
         return diamond.print().split("\n").length;
     }
 
-    private String stripAllLineFeed(Diamond diamond) {
-        return stripAll(diamond.print(), "\\n");
+    private String stripAllLF(Diamond diamond) {
+        return stripAll(diamond, "\\n");
     }
 
     private String stripAll(Diamond diamond) {
-        return stripAll(diamond.print(), "\\s+");
+        return stripAll(diamond, "\\s+");
     }
 
-    private String stripAll(String s, String regex) {
-        return s.replaceAll(regex, "");
+    private String stripAll(Diamond diamond, String regex) {
+        return diamond.print().replaceAll(regex, "");
     }
 }

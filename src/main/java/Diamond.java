@@ -15,11 +15,15 @@ public class Diamond {
     }
 
     public String print() {
+        return print(this.letter).toString();
+    }
+
+    private StringBuilder print(char current) {
         StringBuilder out = new StringBuilder();
-        out.append(letter);
-        if (letter != TOP_LEVEL_CHAR) {
-            out.append(letter);
+        out.append(current);
+        if (current != TOP_LEVEL_CHAR) {
+            out.append(current);
         }
-        return out.toString();
+        return out;
     }
 }

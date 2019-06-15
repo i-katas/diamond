@@ -16,12 +16,17 @@ public class Diamond {
 
     public String print() {
         StringBuilder out = new StringBuilder();
-        if (letter - 1 >= TOP_LEVEL_CHAR) {
-            out.append(print((char) (letter - 1)));
+        char letter = this.letter;
+        int head = TOP_LEVEL_CHAR;
+        while (head <= letter - 1) {
+            out.append(print((char) (head)));
+            head++;
         }
         out.append(print(letter));
-        if (letter - 1 >= TOP_LEVEL_CHAR) {
-            out.append(print((char) (letter - 1)));
+        int tail = letter - 1;
+        while (tail >= TOP_LEVEL_CHAR) {
+            out.append(print((char) tail));
+            tail--;
         }
         return out.toString();
     }

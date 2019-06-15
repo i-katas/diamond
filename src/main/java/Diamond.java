@@ -36,6 +36,18 @@ public class Diamond {
     }
 
     private CharSequence print(char current) {
-        return current == TOP_LEVEL_CHAR ? String.valueOf(current) : new String(new char[]{current, current});
+        if (current == TOP_LEVEL_CHAR) {
+            return String.valueOf(current);
+        }
+        return String.valueOf(current) + spaces(current) + current;
+    }
+
+    private CharSequence spaces(char current) {
+        StringBuilder out = new StringBuilder();
+        int n = current - TOP_LEVEL_CHAR;
+        for (int i = 0; i < n; i++) {
+            out.append(' ');
+        }
+        return out.toString();
     }
 }

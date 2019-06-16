@@ -8,10 +8,10 @@ public class Diamond {
     private static final char TOP_LEVEL_CHAR = 'A';
     private static final char LF = '\n';
     private static final char SPACE = ' ';
-    private char letter;
+    private final char middle;
 
-    public Diamond(char letter) {
-        this.letter = letter;
+    public Diamond(char middle) {
+        this.middle = middle;
     }
 
     public static Diamond of(char letter) {
@@ -19,30 +19,30 @@ public class Diamond {
     }
 
     public String print() {
-        return String.valueOf(top(letter)) + line(letter, letter) + bottom(letter);
+        return String.valueOf(top()) + line(middle) + bottom();
     }
 
-    private CharSequence top(final char middle) {
+    private CharSequence top() {
         StringBuilder it = new StringBuilder();
         for (char start = TOP_LEVEL_CHAR, end = (char) (middle - 1); start <= end; start++) {
-            it.append(line(start, middle)).append(LF);
+            it.append(line(start)).append(LF);
         }
         return it;
     }
 
-    private CharSequence bottom(final char middle) {
+    private CharSequence bottom() {
         StringBuilder it = new StringBuilder();
         for (char start = TOP_LEVEL_CHAR, end = (char) (middle - 1); start <= end; end--) {
-            it.append(LF).append(line(end, middle));
+            it.append(LF).append(line(end));
         }
         return it;
     }
 
-    private CharSequence line(char current, char middle) {
-        return indent(current, middle) + current + (current == TOP_LEVEL_CHAR ? "" : spaces(current) + current);
+    private CharSequence line(char current) {
+        return indent(current) + current + (current == TOP_LEVEL_CHAR ? "" : spaces(current) + current);
     }
 
-    private String indent(char current, char middle) {
+    private String indent(char current) {
         return repeat(SPACE, middle - current);
     }
 

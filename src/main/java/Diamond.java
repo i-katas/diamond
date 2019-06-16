@@ -8,6 +8,7 @@ public class Diamond {
     private static final char TOP_LEVEL_CHAR = 'A';
     private static final char LF = '\n';
     private static final char SPACE = ' ';
+    private static final String NONE = "";
     private final char middle;
 
     public Diamond(char middle) {
@@ -39,7 +40,7 @@ public class Diamond {
     }
 
     private CharSequence line(char current) {
-        return indent(current) + current + (current == TOP_LEVEL_CHAR ? "" : spaces(current) + current);
+        return indent(current) + current + (current == TOP_LEVEL_CHAR ? NONE : spaces(current) + current);
     }
 
     private String indent(char current) {
@@ -55,6 +56,12 @@ public class Diamond {
     }
 
     private String repeat(char c, int n) {
+        if (n == 0) {
+            return NONE;
+        }
+        if (n == 1) {
+            return String.valueOf(c);
+        }
         char[] chars = new char[n];
         Arrays.fill(chars, c);
         return String.valueOf(chars);
